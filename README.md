@@ -7,8 +7,8 @@ SegFormer drivable-area segmentation, multi-object tracking and simulation rules
 The focus is not just running models: it is separating data splits, measuring complete
 workloads, finding bottlenecks and preserving evidence that can be checked.
 
-[![Tests](https://github.com/Harsh-ryUk/Hybrid-Transformer-ADAS-India-Perspective/actions/workflows/ci.yml/badge.svg)](https://github.com/Harsh-ryUk/Hybrid-Transformer-ADAS-India-Perspective/actions/workflows/ci.yml)
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Harsh-ryUk/Hybrid-Transformer-ADAS-India-Perspective/blob/main/notebooks/colab_drivable_training.ipynb)
+[![Tests](https://github.com/Harsh-ryUk/RoadSense-India/actions/workflows/ci.yml/badge.svg)](https://github.com/Harsh-ryUk/RoadSense-India/actions/workflows/ci.yml)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Harsh-ryUk/RoadSense-India/blob/main/notebooks/colab_drivable_training.ipynb)
 
 [Accuracy evidence](benchmarks/idd_lite_finetuned_20261004/README.md) ·
 [T4 video benchmark](benchmarks/colab_t4_video_20261001/README.md) ·

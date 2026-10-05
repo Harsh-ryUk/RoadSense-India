@@ -7,7 +7,7 @@ without annotations.
 Colab GPU allocation, session duration and availability vary. Record the actual
 GPU assigned to your session; do not assume a specific accelerator or FPS.
 
-[Open the notebook](https://colab.research.google.com/github/Harsh-ryUk/Hybrid-Transformer-ADAS-India-Perspective/blob/main/notebooks/colab_benchmark.ipynb)
+[Open the notebook](https://colab.research.google.com/github/Harsh-ryUk/RoadSense-India/blob/main/notebooks/colab_benchmark.ipynb)
 
 ## Prepare the runtime
 
@@ -69,7 +69,7 @@ additional GPU evidence, not a replacement for fabricated numbers.
 
 Upload a permitted dashcam clip through Colab's Files pane, then change the
 notebook's `SOURCE` to its absolute path, for example `/content/dashcam.mp4`.
-Change `OUTPUT_DIRECTORY` to `/content/Hybrid-Transformer-ADAS-India-Perspective/runs/colab_video`
+Change `OUTPUT_DIRECTORY` to `/content/RoadSense-India/runs/colab_video`
 to keep it separate from the sample experiment, then rerun measurement/report/export.
 For the default protocol each repeat requires at least 120 decodable frames.
 Each repeat reads the same first 120 frames; 300 distinct video frames are not
