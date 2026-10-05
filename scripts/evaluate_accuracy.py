@@ -18,7 +18,11 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from scripts.benchmark_pipeline import benchmark_device, digest
-from src.evaluation.ground_truth import binary_road_counts, coco_detection_metrics, road_summary
+from src.evaluation.ground_truth import (
+    binary_road_counts,
+    coco_detection_metrics,
+    road_summary,
+)
 
 
 def load_manifest(path):
@@ -49,8 +53,33 @@ def load_manifest(path):
     return manifest
 
 
+def local_segformer_fingerprint(model_name):
+    directory = Path(model_name)
+    if not directory.is_dir():
+        return None  # Hub models are identified by their resolved checkpoint revision.
+    paths = {directory / 'config.json', directory / 'preprocessor_config.json',
+             *directory.glob('*.safetensors'), *directory.glob('pytorch_model*.bin'),
+             *directory.glob('*.index.json')}
+    return {path.name: digest(path) for path in sorted(paths) if path.is_file()}
+
+
+def check_evaluation_contract(manifest, config_path, model_name):
+    """An independent test must use the checkpoint/config frozen before prediction."""
+    contract = manifest.get('evaluation_contract')
+    if contract is None:
+        return  # Existing published IDD protocols remain unchanged.
+    if manifest.get('stage') != 'frozen_human_reviewed_test':
+        raise ValueError('Independent test is not frozen and human reviewed')
+    if digest(config_path) != contract.get('configuration_file_sha256'):
+        raise ValueError('Independent-test evaluation configuration changed')
+    fingerprint = local_segformer_fingerprint(model_name)
+    if not fingerprint or fingerprint != contract.get('segformer_local_files_sha256'):
+        raise ValueError('Independent-test checkpoint changed')
+
+
 def evaluate(args):
     import torch
+
     from src.lane_detection.segformer_lane_detector import SegFormerLaneDetector
     from src.perception.india_detector import IndiaObjectDetector
     from src.utils.runtime import validate_config
@@ -63,6 +92,9 @@ def evaluate(args):
     has_masks = any('mask' in sample for sample in manifest['samples'])
     has_boxes = any('boxes' in sample for sample in manifest['samples'])
     seg = config.get('segmentation', {})
+    segformer_name = seg.get('model_name', 'nvidia/segformer-b0-finetuned-ade-512-512')
+    check_evaluation_contract(manifest, args.config, segformer_name)
+    local_checkpoint = local_segformer_fingerprint(segformer_name) if has_masks else None
     lane = SegFormerLaneDetector(device=device, **{key: value for key, value in seg.items() if key in
         ('model_name', 'input_size', 'road_class_ids', 'frame_roi', 'roi_top_fraction', 'min_road_coverage')}) if has_masks else None
     det = config.get('detection', {})
@@ -109,10 +141,14 @@ def evaluate(args):
         trace.append(row)
         if index % 20 == 0:
             print(f'Evaluated {index}/{len(manifest["samples"])} held-out images', flush=True)
+    if has_masks and local_segformer_fingerprint(segformer_name) != local_checkpoint:
+        raise ValueError('Local checkpoint files changed during evaluation')
+    check_evaluation_contract(manifest, args.config, segformer_name)
     report = {
         'schema_version': 1, 'timestamp_utc': datetime.now(timezone.utc).isoformat(),
         'dataset': manifest['dataset'], 'split': manifest['split'], 'images': len(trace),
         'selection': manifest.get('selection'),
+        'evaluation_contract': manifest.get('evaluation_contract'),
         'manifest_sha256': digest(args.manifest), 'configuration': config,
         'configuration_sha256': hashlib.sha256(yaml.safe_dump(config).encode()).hexdigest(),
         'binary_road': road_summary(mask_counts) if mask_counts else None,
@@ -120,6 +156,7 @@ def evaluate(args):
         'label_schema': manifest.get('label_schema'), 'ground_truth_category_counts': dict(gt_counts),
         'road_observation_frames': dict(Counter(row['road_status'] for row in trace if 'road_status' in row)),
         'models': {'segformer_revision': getattr(lane.model.config, '_commit_hash', None) if lane else None,
+                   'segformer_local_files_sha256': local_checkpoint,
                    'yolo_weights_sha256': digest(weights) if detector and weights.is_file() else None},
         'environment': {'device': device, 'gpu': torch.cuda.get_device_name(device) if device.startswith('cuda') else None,
                         'python': platform.python_version(),

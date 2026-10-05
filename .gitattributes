@@ -1,0 +1,2 @@
+# Preserve the byte-identical measured log; do not reformat its original spaces.
+benchmarks/idd_lite_finetuned_20261004/training.log -whitespace

@@ -1,0 +1,5 @@
+{"event": "amp_overflow_skipped", "epoch": 4, "batch": 115, "loss_scale": 32768.0, "skipped_steps_total": 1, "consecutive_overflows": 1}
+{"event": "amp_overflow_skipped", "epoch": 19, "batch": 56, "loss_scale": 32768.0, "skipped_steps_total": 2, "consecutive_overflows": 1}
+{"event": "amp_overflow_skipped", "epoch": 32, "batch": 82, "loss_scale": 32768.0, "skipped_steps_total": 3, "consecutive_overflows": 1}
+{"event": "amp_overflow_skipped", "epoch": 35, "batch": 92, "loss_scale": 16384.0, "skipped_steps_total": 4, "consecutive_overflows": 1}
+{"event": "amp_overflow_skipped", "epoch": 50, "batch": 27, "loss_scale": 16384.0, "skipped_steps_total": 5, "consecutive_overflows": 1}

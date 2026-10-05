@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-10-04T10:03:20.490383+00:00",
+  "settings": {
+    "root": "/content/idd_data/idd20k_lite",
+    "manifest": "training/splits.json",
+    "output": "/content/drivable_run_stable_20261004",
+    "model": "nvidia/segformer-b0-finetuned-ade-512-512",
+    "device": "cuda:0",
+    "epochs": 50,
+    "batch": 8,
+    "input_size": 512,
+    "lr": 6e-05,
+    "seed": 42,
+    "threads": 2,
+    "smoke_steps": 0,
+    "precision": "fp16"
+  },
+  "manifest_sha256": "1e30c0de0df837c0bb615b4b5ed7a42e5132e5c18a2733409bfe92b8e47433da",
+  "counts": {
+    "fit": {
+      "images": 1213,
+      "drives": 263
+    },
+    "development": {
+      "images": 190,
+      "drives": 46
+    },
+    "official_val": {
+      "images": 204,
+      "drives": 61
+    }
+  },
+  "model_revision": "489d5cd81a0b59fab9b7ea758d3548ebe99677da",
+  "label_schema": {
+    "raw_valid_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "raw_drivable_id": 0,
+    "training_non_drivable_id": 0,
+    "training_drivable_id": 1,
+    "ignore_id": 255
+  },
+  "loss": "ignore-aware CE + 0.5 soft drivable Dice",
+  "selection_metric": "Prefer all three targets met on internal raw development metrics; otherwise maximize raw global IoU. No official-val selection.",
+  "official_val_used_for_selection": false,
+  "official_val_inference_during_training": false,
+  "numerics": {
+    "precision": "cuda_fp16_amp",
+    "loss_and_resize_dtype": "float32",
+    "amp_overflow_policy": "Skip unsafe update, reduce scale, do not advance scheduler; fail after 8 consecutive overflows"
+  },
+  "environment": {
+    "device": "cuda:0",
+    "gpu": "Tesla T4",
+    "python": "3.13.15",
+    "torch": "2.11.0+cu130",
+    "packages": {
+      "transformers": "4.57.6",
+      "numpy": "2.1.3",
+      "opencv-python": "5.0.0.93",
+      "Pillow": "11.3.0"
+    }
+  },
+  "source_sha256": {
+    "scripts/train_drivable_idd_lite.py": "15b47f09f10f41d195bb6d50a37d3ad2bb5ebf7f8fe1eb18345fbcb376e51dd6",
+    "scripts/prepare_idd_lite_training.py": "b3a581a20725489e9699d590f3680f168007771473fb3bdc1359fc6ed9c3104c",
+    "src/evaluation/ground_truth.py": "173cd6502c08a54987a2ed54fc71d1e6c050696b5f8bfd7c027c8c13002c11ad"
+  },
+  "limitations": [
+    "Seeds do not guarantee bit-identical GPU training.",
+    "Internal raw-model metrics differ from deployed mask-postprocessed accuracy.",
+    "User targets are ambitions, not achieved accuracy."
+  ]
+}

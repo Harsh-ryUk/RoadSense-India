@@ -1,0 +1,20 @@
+{
+  "metrics": {
+    "tp": 4451862,
+    "fp": 115523,
+    "fn": 258081,
+    "tn": 9990043,
+    "valid_pixels": 14815509,
+    "ignored_pixels": 3051,
+    "IoU": 0.92257659674734,
+    "precision": 0.9747069712756862,
+    "recall": 0.945205069360712,
+    "aggregation": "global pixel counts; not mean of per-image IoUs"
+  },
+  "targets_met": {
+    "IoU": false,
+    "precision": false,
+    "recall": false
+  },
+  "all_met": false
+}

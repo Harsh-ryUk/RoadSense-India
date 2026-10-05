@@ -1,0 +1,17 @@
+# Full-frame held-out Indian-road evaluation; never reuse the Short's camera crop.
+system:
+  device: cpu
+detection:
+  model_path: yolov8n.pt
+  confidence_threshold: 0.35
+  iou_threshold: 0.45
+  input_size: [640, 640]
+zero_shot:
+  enabled: false
+segmentation:
+  model_name: nvidia/segformer-b0-finetuned-ade-512-512
+  input_size: [512, 512]
+  road_class_ids: [6]
+  frame_roi: [0, 0, 1, 1]
+  roi_top_fraction: 0
+  min_road_coverage: 0.02

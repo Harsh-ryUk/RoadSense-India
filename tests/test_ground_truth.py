@@ -4,7 +4,7 @@ import json
 import numpy as np
 import pytest
 
-from scripts.evaluate_accuracy import load_manifest
+from scripts.evaluate_accuracy import load_manifest, local_segformer_fingerprint
 from src.evaluation.ground_truth import binary_road_counts, coco_detection_metrics, road_summary
 
 
@@ -59,3 +59,15 @@ def test_coco_ap_includes_gt_class_with_no_predictions():
     assert metrics['mAP50_95'] == pytest.approx(0.5)
     assert metrics['per_class_AP50_95']['autorickshaw'] == 0
     assert coco_detection_metrics(images, gt, [], ['car', 'autorickshaw'])['mAP50_95'] == 0
+
+
+def test_local_fine_tuned_checkpoint_fingerprint_tracks_weight_changes(tmp_path):
+    (tmp_path / 'config.json').write_text('{}')
+    weights = tmp_path / 'model.safetensors'
+    weights.write_bytes(b'generated fixture, not actual weights')
+    first = local_segformer_fingerprint(str(tmp_path))
+    weights.write_bytes(b'changed fixture')
+    second = local_segformer_fingerprint(str(tmp_path))
+    assert first['config.json'] == second['config.json']
+    assert first['model.safetensors'] != second['model.safetensors']
+    assert local_segformer_fingerprint('nvidia/segformer-b0-finetuned-ade-512-512') is None

@@ -1,4 +1,6 @@
 -r requirements.txt
+# The training contract tests exercise the public torch.amp API.
+torch>=2.8,<3
 pytest>=7.4
 ruff>=0.9
 matplotlib>=3.7

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "gpu": "Tesla T4",
+  "torch": "2.11.0+cu130",
+  "checks": [
+    "CUDA injected overflow skipped; weights and scheduler preserved; finite update recovered",
+    "CUDA injected overflow skipped; weights and scheduler preserved; finite update recovered",
+    "AMP model forward with FP32 resize/loss has finite CUDA gradients"
+  ],
+  "accuracy": null
+}

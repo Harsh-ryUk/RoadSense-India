@@ -38,29 +38,6 @@ as a portable lock or combine unrelated Gradio/Diffusers work with it. Use a
 fresh VM or an isolated project environment for another experiment and record
 the actual versions and warnings.
 
-## Optional local-agent connection
-
-The official [Colab MCP server](https://github.com/googlecolab/colab-mcp) bridges
-a local agent to a browser session. It is an agent integration, not an ADAS runtime
-dependency. It requires dynamic tool-list support and Python 3.13 at the inspected
-revision. With `uv` installed, a Codex configuration can pin that revision:
-
-```bash
-codex mcp add colab-mcp -- uvx --python 3.13 git+https://github.com/googlecolab/colab-mcp@b9ab3899e0f1fa493390b1fd6d54aa2e464ecdf1
-codex mcp get colab-mcp
-```
-
-Reload the client's MCP connection if needed, then use the server's
-`open_colab_browser_connection` tool. Sign in to your intended Google account,
-review any connection/permission prompt, and keep the browser session open.
-The local bridge is not a GPU: CUDA allocation must still succeed in Colab.
-Do not commit browser bridge tokens, agent settings or account credentials.
-Run only this project's code in the intended notebook; do not grant broader
-Google Drive access for a latency experiment.
-
-The ordinary notebook flow above does not require MCP. Configuration success,
-browser connection, GPU allocation and measured frame completion are separate
-milestones; no metrics should be reported until the final one succeeds.
 
 ## Run the sample experiment
 

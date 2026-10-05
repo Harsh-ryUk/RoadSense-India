@@ -11,7 +11,7 @@ safety or Level 4 autonomy. Legacy names remain for source/API compatibility.
 | Component | Implementation | Validation here | Limitation |
 |---|---|---|---|
 | Detection | COCO YOLOv8n; actual labels; category thresholds | Real runtime; custom-taxonomy regression | India-specific fine-tuned weights not measured |
-| Segmentation | ADE20K SegFormer-B0; road label 6; RGB input | Processor equivalence; real runtime; mask tests | General scene model; not lane-marking segmentation |
+| Segmentation | Binary IDD Lite fine-tuned SegFormer-B0, drivable class 1; default demo still uses ADE20K class 6 | 92.26% global drivable IoU on all 204 IDD Lite validation pairs; completed 50-epoch run | Component/profile score only; selected weights retained privately; not lane or complete-system accuracy |
 | Zero-shot | OWLv2 road-object text prompts | Real full benchmarks; scheduling/filter tests | Supplemental display; periodic slow inference |
 | Tracking | Kalman + IoU + Hungarian | Lifecycle/association tests | No learned appearance; not full DeepSORT |
 | Signals | HSV crop heuristic | Tests/orchestration; no lights in sample | No signal relevance reasoning |
@@ -26,6 +26,32 @@ Current code preserves source detail until the configured network resize and
 supports an explicit crop. See [road-quality behaviour](ROAD_QUALITY.md).
 
 ## Data and measurement
+
+The [completed IDD Lite fine-tuning experiment](../benchmarks/idd_lite_finetuned_20261004/README.md)
+uses 1,213 fit images across 263 drive folders and 190 internal development images
+across 46 separate drives. Official validation retains all 204 images across
+61 drive folders. Fifty epochs completed; internal raw development selected epoch 36.
+The selected checkpoint achieved **92.2577% drivable IoU, 97.4707% pixel precision
+and 94.5205% recall** after deployed mask postprocessing, on a Colab Tesla T4.
+All 204 masks were observed. It did not meet all 95/98/95% research targets.
+
+The binary target maps raw level1Id 0 to class 1, raw 1–6 to class 0 and ignores 255.
+The processor retains label zero. Official validation was not used for gradients
+or checkpoint selection, but had already been inspected in the reference experiment.
+Exact duplicate and drive-folder checks do not prove geographic independence.
+The 40-frame new-session pilot still awaits human labels/review; no independent
+dashcam accuracy or full-pipeline timing with the fine-tuned model is available.
+Default runtime profiles are not silently switched to these privately retained weights.
+
+The separate [IDD Lite accuracy experiment](../benchmarks/idd_lite_cpu_20261001/README.md)
+evaluates all 204 official validation pairs (61 drive folders), at 320×227 source
+resolution and 512×512 network input. Drivable-area IoU is 79.8684%, pixel
+precision 94.9258% and recall 83.4304%. Four unknown masks are retained as misses.
+The label target is level1Id 0, including parking/drivable fallback, with only
+255 ignored. This is the SegFormer component plus mask postprocessing under
+`Normal` preprocessing and a full-frame config, not the video crop, scene routing,
+lane-marking F1, detection AP or pothole accuracy. The reference model was not fine-tuned
+on IDD in this experiment. Dataset imagery/labels are not redistributed.
 
 [CPU evidence](../benchmarks/mac_m1_cpu/README.md) and
 [Tesla T4 evidence](../benchmarks/colab_t4_sample_20260930T202529Z/README.md) use one letterboxed, repeated
@@ -68,7 +94,9 @@ ego-motion compensation and road-direction context are not implemented.
 
 ## Next validation
 
-Use an annotated held-out Indian-road set to measure class-wise precision/recall,
+Retain the measured IDD Lite baseline and use separate held-out Indian-road data
+for broader accuracy claims. See the [validation roadmap](VALIDATION_ROADMAP.md)
+for dedicated damage/lane models and split isolation. Measure class-wise precision/recall,
 road IoU, tracking ID switches/MOTA, event precision/recall and decision errors.
 Compare resolution/scheduling profiles on identical examples. Then measure
 deployment hardware with decode, queueing, cold start, peak/steady memory and

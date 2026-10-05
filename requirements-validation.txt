@@ -1,0 +1,5 @@
+# Preparation / annotation-contract tests only; no model inference dependencies.
+numpy>=1.24,<3
+opencv-python-headless>=4.8,<5
+Pillow>=9,<13
+PyYAML>=6,<7

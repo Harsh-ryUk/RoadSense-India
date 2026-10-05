@@ -127,6 +127,7 @@ Reproduction path: restore exact source → verify input/checkpoints → run the
 replay → inspect raw traces/stage costs → evaluate annotations separately.
 These results support a portfolio profiling/optimization claim, not driving safety.
 [Held-out evaluation](../../docs/ACCURACY_EVALUATION.md) is separate: no IDD score
-is claimed until the complete licensed archive passes verification and evaluation
-finishes. Detection mAP needs bounding-box annotations. Historical repeated-image
+is derived from this unannotated video. Separate [IDD Lite fine-tuning results](../idd_lite_finetuned_20261004/README.md)
+now report drivable segmentation accuracy, using a different checkpoint.
+Detection mAP needs bounding-box annotations. Historical repeated-image
 M1/T4 records remain unchanged and are not comparable to this video as if paired.

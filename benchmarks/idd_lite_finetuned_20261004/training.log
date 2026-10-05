@@ -1,0 +1,203 @@
+{"stage": "training", "utc": "2026-10-04T10:03:07.957192+00:00"}
+COMMAND: ["scripts/train_drivable_idd_lite.py", "--root", "/content/idd_data/idd20k_lite", "--manifest", "training/splits.json", "--output", "/content/drivable_run_stable_20261004", "--device", "cuda:0", "--epochs", "50", "--batch", "8", "--input-size", "512", "--lr", "0.00006", "--seed", "42", "--precision", "fp16"]
+2026-10-04 10:03:12.425716: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+/usr/local/lib/python3.13/dist-packages/transformers/image_processing_base.py:417: UserWarning: The following named arguments are not valid for `SegformerImageProcessor.__init__` and were ignored: 'feature_extractor_type', 'reduce_labels'
+  image_processor = cls(**image_processor_dict)
+Some weights of SegformerForSemanticSegmentation were not initialized from the model checkpoint at nvidia/segformer-b0-finetuned-ade-512-512 and are newly initialized because the shapes did not match:
+- decode_head.classifier.bias: found shape torch.Size([150]) in the checkpoint and torch.Size([2]) in the model instantiated
+- decode_head.classifier.weight: found shape torch.Size([150, 256, 1, 1]) in the checkpoint and torch.Size([2, 256, 1, 1]) in the model instantiated
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+{"epoch": 1, "fit_mean_loss": 0.6344679593548535, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 152, "amp_skipped_updates_total": 0, "loss_scale": 65536.0, "epoch_seconds_including_dev": 48.226414646000194, "development_raw": {"tp": 4219522, "fp": 430858, "fn": 182183, "tn": 8967052, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.8731437127669106, "precision": 0.9073499369943961, "recall": 0.9586108110379955, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 2, "fit_mean_loss": 0.23088625147140232, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 304, "amp_skipped_updates_total": 0, "loss_scale": 65536.0, "epoch_seconds_including_dev": 46.77863099199976, "development_raw": {"tp": 4204079, "fp": 281440, "fn": 197626, "tn": 9116470, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.8977042137281677, "precision": 0.9372558671582931, "recall": 0.9551023978208444, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 3, "fit_mean_loss": 0.13541838941943615, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 456, "amp_skipped_updates_total": 0, "loss_scale": 65536.0, "epoch_seconds_including_dev": 48.954688430999795, "development_raw": {"tp": 4181271, "fp": 151038, "fn": 220434, "tn": 9246872, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9184069911260091, "precision": 0.9651368358074182, "recall": 0.9499207693382451, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": false}}
+{"event": "amp_overflow_skipped", "epoch": 4, "batch": 115, "loss_scale": 32768.0, "skipped_steps_total": 1, "consecutive_overflows": 1}
+{"epoch": 4, "fit_mean_loss": 0.10372691206417638, "optimizer_updates": 151, "amp_skipped_updates": 1, "optimizer_updates_total": 607, "amp_skipped_updates_total": 1, "loss_scale": 32768.0, "epoch_seconds_including_dev": 48.323909681999794, "development_raw": {"tp": 4242145, "fp": 183579, "fn": 159560, "tn": 9214331, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9251651587993241, "precision": 0.9585200071219986, "recall": 0.9637504103523521, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 5, "fit_mean_loss": 0.08858485451092528, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 759, "amp_skipped_updates_total": 1, "loss_scale": 32768.0, "epoch_seconds_including_dev": 47.58668270499993, "development_raw": {"tp": 4242969, "fp": 168531, "fn": 158736, "tn": 9229379, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9283916629250656, "precision": 0.9617973478408705, "recall": 0.9639376105395523, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 6, "fit_mean_loss": 0.08231366049845358, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 911, "amp_skipped_updates_total": 1, "loss_scale": 32768.0, "epoch_seconds_including_dev": 47.803968884999904, "development_raw": {"tp": 4225070, "fp": 144181, "fn": 176635, "tn": 9253729, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9294271787721909, "precision": 0.9670009802595456, "recall": 0.959871231715892, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 7, "fit_mean_loss": 0.07492582593343519, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 1063, "amp_skipped_updates_total": 1, "loss_scale": 32768.0, "epoch_seconds_including_dev": 46.92427973599979, "development_raw": {"tp": 4210289, "fp": 129200, "fn": 191416, "tn": 9268710, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9292379778432786, "precision": 0.9702269092052083, "recall": 0.956513214765642, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 8, "fit_mean_loss": 0.07052532822409643, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 1215, "amp_skipped_updates_total": 1, "loss_scale": 32768.0, "epoch_seconds_including_dev": 47.40072708300022, "development_raw": {"tp": 4260562, "fp": 171625, "fn": 141143, "tn": 9226285, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9316104457802082, "precision": 0.9612775814738864, "recall": 0.9679344708470922, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 9, "fit_mean_loss": 0.06932817123713615, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 1367, "amp_skipped_updates_total": 1, "loss_scale": 32768.0, "epoch_seconds_including_dev": 47.53144639199991, "development_raw": {"tp": 4244931, "fp": 140038, "fn": 156774, "tn": 9257872, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9346479974758589, "precision": 0.968064084375511, "recall": 0.9643833469076187, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 10, "fit_mean_loss": 0.0651959633947598, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 1519, "amp_skipped_updates_total": 1, "loss_scale": 32768.0, "epoch_seconds_including_dev": 47.6087042449999, "development_raw": {"tp": 4246149, "fp": 142645, "fn": 155556, "tn": 9255265, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9343798342997348, "precision": 0.9674979048914121, "recall": 0.9646600578639414, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 11, "fit_mean_loss": 0.06335526779109746, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 1671, "amp_skipped_updates_total": 1, "loss_scale": 32768.0, "epoch_seconds_including_dev": 47.00339112900019, "development_raw": {"tp": 4240619, "fp": 138727, "fn": 161086, "tn": 9259183, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9339681774773854, "precision": 0.9683224390125832, "recall": 0.9634037265105226, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 12, "fit_mean_loss": 0.061753873454571166, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 1823, "amp_skipped_updates_total": 1, "loss_scale": 32768.0, "epoch_seconds_including_dev": 46.77234466599975, "development_raw": {"tp": 4243343, "fp": 135774, "fn": 158362, "tn": 9262136, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9351763391081259, "precision": 0.9689951193357017, "recall": 0.9640225776148106, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 13, "fit_mean_loss": 0.06009243456961592, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 1975, "amp_skipped_updates_total": 1, "loss_scale": 32768.0, "epoch_seconds_including_dev": 47.24481343799971, "development_raw": {"tp": 4271994, "fp": 161957, "fn": 129711, "tn": 9235953, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9360890442806676, "precision": 0.9634734348665558, "recall": 0.9705316462598016, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 14, "fit_mean_loss": 0.058100160942255515, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 2127, "amp_skipped_updates_total": 1, "loss_scale": 32768.0, "epoch_seconds_including_dev": 47.57097422800007, "development_raw": {"tp": 4249610, "fp": 132106, "fn": 152095, "tn": 9265804, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9373152078902275, "precision": 0.9698506247324108, "recall": 0.9654463440871208, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 15, "fit_mean_loss": 0.055801166984677214, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 2279, "amp_skipped_updates_total": 1, "loss_scale": 32768.0, "epoch_seconds_including_dev": 47.592133531999934, "development_raw": {"tp": 4258227, "fp": 139281, "fn": 143478, "tn": 9258629, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9377318053832362, "precision": 0.9683272890009523, "recall": 0.9674039945884606, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 16, "fit_mean_loss": 0.05403230261896036, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 2431, "amp_skipped_updates_total": 1, "loss_scale": 32768.0, "epoch_seconds_including_dev": 46.26695969699995, "development_raw": {"tp": 4272863, "fp": 157980, "fn": 128842, "tn": 9239930, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9370960932608283, "precision": 0.9643453852912414, "recall": 0.970729069758196, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 17, "fit_mean_loss": 0.05418679048748716, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 2583, "amp_skipped_updates_total": 1, "loss_scale": 65536.0, "epoch_seconds_including_dev": 47.111762685999565, "development_raw": {"tp": 4273638, "fp": 151851, "fn": 128067, "tn": 9246059, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9385276034817623, "precision": 0.9656871816877186, "recall": 0.9709051378954292, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 18, "fit_mean_loss": 0.05200161225633099, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 2735, "amp_skipped_updates_total": 1, "loss_scale": 65536.0, "epoch_seconds_including_dev": 47.36775025499992, "development_raw": {"tp": 4261993, "fp": 144502, "fn": 139712, "tn": 9253408, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9374832690196465, "precision": 0.9672070432395816, "recall": 0.9682595721430672, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"event": "amp_overflow_skipped", "epoch": 19, "batch": 56, "loss_scale": 32768.0, "skipped_steps_total": 2, "consecutive_overflows": 1}
+{"epoch": 19, "fit_mean_loss": 0.0512641890353187, "optimizer_updates": 151, "amp_skipped_updates": 1, "optimizer_updates_total": 2886, "amp_skipped_updates_total": 2, "loss_scale": 32768.0, "epoch_seconds_including_dev": 47.04825154500031, "development_raw": {"tp": 4258588, "fp": 137732, "fn": 143117, "tn": 9260178, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9381313145220431, "precision": 0.9686710703497471, "recall": 0.9674860082627073, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 20, "fit_mean_loss": 0.05099561062671385, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 3038, "amp_skipped_updates_total": 2, "loss_scale": 32768.0, "epoch_seconds_including_dev": 46.53143616299985, "development_raw": {"tp": 4254698, "fp": 133852, "fn": 147007, "tn": 9264058, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9380761833662327, "precision": 0.9694997208645224, "recall": 0.9666022598061433, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 21, "fit_mean_loss": 0.04935669596786845, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 3190, "amp_skipped_updates_total": 2, "loss_scale": 32768.0, "epoch_seconds_including_dev": 47.1060074399993, "development_raw": {"tp": 4262872, "fp": 135822, "fn": 138833, "tn": 9262088, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9394703326283238, "precision": 0.9691221985434768, "recall": 0.9684592674883937, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 22, "fit_mean_loss": 0.0481211184804241, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 3342, "amp_skipped_updates_total": 2, "loss_scale": 32768.0, "epoch_seconds_including_dev": 47.14471800999945, "development_raw": {"tp": 4272704, "fp": 149633, "fn": 129001, "tn": 9248277, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9387797610285151, "precision": 0.9661642701585157, "recall": 0.9706929473919765, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 23, "fit_mean_loss": 0.0478417396741963, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 3494, "amp_skipped_updates_total": 2, "loss_scale": 32768.0, "epoch_seconds_including_dev": 47.34283568200044, "development_raw": {"tp": 4235247, "fp": 109672, "fn": 166458, "tn": 9288238, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9387925238790729, "precision": 0.9747585628178569, "recall": 0.9621832903386301, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 24, "fit_mean_loss": 0.04725205152305511, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 3646, "amp_skipped_updates_total": 2, "loss_scale": 32768.0, "epoch_seconds_including_dev": 46.38280636299987, "development_raw": {"tp": 4274179, "fp": 143025, "fn": 127526, "tn": 9254885, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9404692908049543, "precision": 0.9676209203831202, "recall": 0.9710280448144526, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 25, "fit_mean_loss": 0.0462539886406209, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 3798, "amp_skipped_updates_total": 2, "loss_scale": 32768.0, "epoch_seconds_including_dev": 47.148430594000274, "development_raw": {"tp": 4258399, "fp": 132562, "fn": 143306, "tn": 9265348, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.939159295206921, "precision": 0.9698102533818906, "recall": 0.9674430703556918, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 26, "fit_mean_loss": 0.04570408417902402, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 3950, "amp_skipped_updates_total": 2, "loss_scale": 32768.0, "epoch_seconds_including_dev": 47.17663703499966, "development_raw": {"tp": 4266135, "fp": 136142, "fn": 135570, "tn": 9261768, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9401231465053802, "precision": 0.9690746402373136, "recall": 0.9692005711423187, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 27, "fit_mean_loss": 0.046302393840446224, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 4102, "amp_skipped_updates_total": 2, "loss_scale": 32768.0, "epoch_seconds_including_dev": 47.46205009500045, "development_raw": {"tp": 4249576, "fp": 114330, "fn": 152129, "tn": 9283580, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.940997135761791, "precision": 0.9738009938802531, "recall": 0.9654386198075519, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 28, "fit_mean_loss": 0.0449771451574166, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 4254, "amp_skipped_updates_total": 2, "loss_scale": 32768.0, "epoch_seconds_including_dev": 46.4196692810001, "development_raw": {"tp": 4265430, "fp": 130598, "fn": 136275, "tn": 9267312, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9411175731190081, "precision": 0.9702918179775015, "recall": 0.9690404059336098, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 29, "fit_mean_loss": 0.045402878113797354, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 4406, "amp_skipped_updates_total": 2, "loss_scale": 32768.0, "epoch_seconds_including_dev": 47.02826117800032, "development_raw": {"tp": 4262530, "fp": 129251, "fn": 139175, "tn": 9268659, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9407573147918452, "precision": 0.970569798448511, "recall": 0.9683815703233178, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 30, "fit_mean_loss": 0.04451111268777299, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 4558, "amp_skipped_updates_total": 2, "loss_scale": 32768.0, "epoch_seconds_including_dev": 47.33967493, "development_raw": {"tp": 4251165, "fp": 116148, "fn": 150540, "tn": 9281762, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.940970190929187, "precision": 0.9734051578167171, "recall": 0.9657996162850532, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 31, "fit_mean_loss": 0.043703051623316315, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 4710, "amp_skipped_updates_total": 2, "loss_scale": 32768.0, "epoch_seconds_including_dev": 46.93086468999991, "development_raw": {"tp": 4268538, "fp": 132818, "fn": 133167, "tn": 9265092, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9413422315864315, "precision": 0.9698233907913834, "recall": 0.9697464959600882, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"event": "amp_overflow_skipped", "epoch": 32, "batch": 82, "loss_scale": 32768.0, "skipped_steps_total": 3, "consecutive_overflows": 1}
+{"epoch": 32, "fit_mean_loss": 0.04347771562604983, "optimizer_updates": 151, "amp_skipped_updates": 1, "optimizer_updates_total": 4861, "amp_skipped_updates_total": 3, "loss_scale": 32768.0, "epoch_seconds_including_dev": 46.57522523899934, "development_raw": {"tp": 4267212, "fp": 137272, "fn": 134493, "tn": 9260638, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9401263764940867, "precision": 0.9688335795975193, "recall": 0.9694452490568995, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 33, "fit_mean_loss": 0.04283700347474952, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 5013, "amp_skipped_updates_total": 3, "loss_scale": 32768.0, "epoch_seconds_including_dev": 47.13300968099975, "development_raw": {"tp": 4263854, "fp": 129773, "fn": 137851, "tn": 9268137, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9409411234038872, "precision": 0.9704633552188203, "recall": 0.9686823628571202, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 34, "fit_mean_loss": 0.04211420592255368, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 5165, "amp_skipped_updates_total": 3, "loss_scale": 32768.0, "epoch_seconds_including_dev": 47.21104811300029, "development_raw": {"tp": 4263386, "fp": 127504, "fn": 138319, "tn": 9270406, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9413091778277399, "precision": 0.9709616956926728, "recall": 0.9685760404207007, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"event": "amp_overflow_skipped", "epoch": 35, "batch": 92, "loss_scale": 16384.0, "skipped_steps_total": 4, "consecutive_overflows": 1}
+{"epoch": 35, "fit_mean_loss": 0.04232239733407606, "optimizer_updates": 151, "amp_skipped_updates": 1, "optimizer_updates_total": 5316, "amp_skipped_updates_total": 4, "loss_scale": 16384.0, "epoch_seconds_including_dev": 47.36115548900034, "development_raw": {"tp": 4278081, "fp": 144051, "fn": 123624, "tn": 9253859, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9411154052263254, "precision": 0.9674249886706231, "recall": 0.971914519487335, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 36, "fit_mean_loss": 0.041789500805973906, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 5468, "amp_skipped_updates_total": 4, "loss_scale": 16384.0, "epoch_seconds_including_dev": 46.432249025999226, "development_raw": {"tp": 4268542, "fp": 130829, "fn": 133163, "tn": 9267081, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9417562008360003, "precision": 0.9702618851649475, "recall": 0.969747404698861, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 37, "fit_mean_loss": 0.04136526390836441, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 5620, "amp_skipped_updates_total": 4, "loss_scale": 16384.0, "epoch_seconds_including_dev": 47.10746007899979, "development_raw": {"tp": 4263149, "fp": 127480, "fn": 138556, "tn": 9270430, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9412618384985378, "precision": 0.970965435704087, "recall": 0.9685221976484112, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 38, "fit_mean_loss": 0.041324006247672775, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 5772, "amp_skipped_updates_total": 4, "loss_scale": 16384.0, "epoch_seconds_including_dev": 47.168358410999645, "development_raw": {"tp": 4264857, "fp": 129433, "fn": 136848, "tn": 9268477, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9412330853750206, "precision": 0.970545184773877, "recall": 0.9689102291044038, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 39, "fit_mean_loss": 0.041110409885915175, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 5924, "amp_skipped_updates_total": 4, "loss_scale": 16384.0, "epoch_seconds_including_dev": 47.074576938000064, "development_raw": {"tp": 4262394, "fp": 125826, "fn": 139311, "tn": 9272084, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9414389432120951, "precision": 0.971326414810561, "recall": 0.9683506732050421, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 40, "fit_mean_loss": 0.04089882245374826, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 6076, "amp_skipped_updates_total": 4, "loss_scale": 16384.0, "epoch_seconds_including_dev": 46.65361958300036, "development_raw": {"tp": 4262976, "fp": 127582, "fn": 138729, "tn": 9270328, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9412024453296953, "precision": 0.9709417345130164, "recall": 0.968482894696487, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 41, "fit_mean_loss": 0.041367170891531815, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 6228, "amp_skipped_updates_total": 4, "loss_scale": 16384.0, "epoch_seconds_including_dev": 47.06522926599973, "development_raw": {"tp": 4264983, "fp": 129822, "fn": 136722, "tn": 9268088, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9411800922735316, "precision": 0.9704601228040834, "recall": 0.9689388543757476, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 42, "fit_mean_loss": 0.04043439908071382, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 6380, "amp_skipped_updates_total": 4, "loss_scale": 16384.0, "epoch_seconds_including_dev": 47.368511954000496, "development_raw": {"tp": 4261522, "fp": 124253, "fn": 140183, "tn": 9273657, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9415734746102372, "precision": 0.9716690892715655, "recall": 0.9681525681525681, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 43, "fit_mean_loss": 0.04056814649531592, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 6532, "amp_skipped_updates_total": 4, "loss_scale": 16384.0, "epoch_seconds_including_dev": 46.81484022400036, "development_raw": {"tp": 4265178, "fp": 128048, "fn": 136527, "tn": 9269862, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9415917380042577, "precision": 0.9708533091627883, "recall": 0.9689831553909224, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 44, "fit_mean_loss": 0.04055641663106433, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 6684, "amp_skipped_updates_total": 4, "loss_scale": 16384.0, "epoch_seconds_including_dev": 46.44217220700011, "development_raw": {"tp": 4263103, "fp": 125769, "fn": 138602, "tn": 9272141, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9416073952053617, "precision": 0.9713436618794078, "recall": 0.9685117471525239, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 45, "fit_mean_loss": 0.04054426334902755, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 6836, "amp_skipped_updates_total": 4, "loss_scale": 16384.0, "epoch_seconds_including_dev": 47.0496112969995, "development_raw": {"tp": 4265427, "fp": 129139, "fn": 136278, "tn": 9268771, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9414199650219695, "precision": 0.9706139354830489, "recall": 0.9690397243795302, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 46, "fit_mean_loss": 0.04145842649638407, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 6988, "amp_skipped_updates_total": 4, "loss_scale": 16384.0, "epoch_seconds_including_dev": 47.030397865999475, "development_raw": {"tp": 4261572, "fp": 124899, "fn": 140133, "tn": 9273011, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9414501467325174, "precision": 0.9715263135217354, "recall": 0.9681639273872283, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 47, "fit_mean_loss": 0.04057489114107913, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 7140, "amp_skipped_updates_total": 4, "loss_scale": 16384.0, "epoch_seconds_including_dev": 47.01244182299979, "development_raw": {"tp": 4263002, "fp": 126574, "fn": 138703, "tn": 9271336, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9414176997486241, "precision": 0.9711648687709246, "recall": 0.9684888014985102, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 48, "fit_mean_loss": 0.04058456844408357, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 7292, "amp_skipped_updates_total": 4, "loss_scale": 32768.0, "epoch_seconds_including_dev": 46.5169718520001, "development_raw": {"tp": 4256907, "fp": 120347, "fn": 144798, "tn": 9277563, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.941366220468053, "precision": 0.9725062790507474, "recall": 0.9671041107934312, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"epoch": 49, "fit_mean_loss": 0.04008744884918076, "optimizer_updates": 152, "amp_skipped_updates": 0, "optimizer_updates_total": 7444, "amp_skipped_updates_total": 4, "loss_scale": 32768.0, "epoch_seconds_including_dev": 46.82210297200072, "development_raw": {"tp": 4260058, "fp": 123384, "fn": 141647, "tn": 9274526, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.9414307652291479, "precision": 0.9718522567425325, "recall": 0.9678199697617174, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{"event": "amp_overflow_skipped", "epoch": 50, "batch": 27, "loss_scale": 16384.0, "skipped_steps_total": 5, "consecutive_overflows": 1}
+{"epoch": 50, "fit_mean_loss": 0.04003192140600988, "optimizer_updates": 151, "amp_skipped_updates": 1, "optimizer_updates_total": 7595, "amp_skipped_updates_total": 5, "loss_scale": 16384.0, "epoch_seconds_including_dev": 47.01856464999946, "development_raw": {"tp": 4263059, "fp": 126479, "fn": 138646, "tn": 9271431, "valid_pixels": 13799615, "ignored_pixels": 1985, "IoU": 0.941450038249329, "precision": 0.9711862615154487, "recall": 0.9685017510260229, "aggregation": "global pixel counts; not mean of per-image IoUs"}, "development_raw_target_status": {"drivable_IoU_95": false, "precision_98": false, "recall_95": true}}
+{
+  "training_completed": true,
+  "best_internal_raw_IoU": 0.9417562008360003,
+  "completed_epochs": 50,
+  "optimizer_updates_total": 7595,
+  "amp_skipped_updates_total": 5,
+  "best_weights_sha256": "1cf44872753e3231540324da9871d598d0687b0be43d2126026e560cbb3061d1",
+  "official_val_metrics": null,
+  "instruction": "Freeze the selected model/config, then run evaluate_accuracy.py separately. Never claim raw internal-dev scores as official-val or deployed accuracy."
+}
+{"stage": "official_validation", "utc": "2026-10-04T10:42:40.537081+00:00"}
+COMMAND: ["scripts/prepare_idd_lite_eval.py", "--root", "/content/idd_data/idd20k_lite", "--output", "/content/drivable_run_stable_20261004/official_val_manifest.json"]
+{
+  "available_images": 204,
+  "selected_images": 204,
+  "policy": "all validation images",
+  "seed": 42,
+  "drives": [
+    "119",
+    "132",
+    "147",
+    "148",
+    "149",
+    "150",
+    "153",
+    "167",
+    "17",
+    "172",
+    "18",
+    "181",
+    "205",
+    "21",
+    "212",
+    "215",
+    "222",
+    "227",
+    "234",
+    "24",
+    "240",
+    "272",
+    "276",
+    "279",
+    "286",
+    "289",
+    "291",
+    "292",
+    "3",
+    "319",
+    "328",
+    "330",
+    "341",
+    "342",
+    "346",
+    "349",
+    "378",
+    "379",
+    "385",
+    "388",
+    "412",
+    "415",
+    "418",
+    "420",
+    "461",
+    "47",
+    "486",
+    "497",
+    "51",
+    "511",
+    "516",
+    "518",
+    "533",
+    "555",
+    "567",
+    "580",
+    "62",
+    "66",
+    "67",
+    "88",
+    "89"
+  ]
+}
+Manifest SHA-256: 913c89d7fc3e348ec5f87dda64690a328dcb215a8858a26a22210f5cd16c9ef7
+COMMAND: ["scripts/evaluate_accuracy.py", "--manifest", "/content/drivable_run_stable_20261004/official_val_manifest.json", "--config", "/content/drivable_run_stable_20261004/evaluation_config.yaml", "--device", "cuda:0", "--threads", "2", "--output", "/content/drivable_run_stable_20261004/official_val_result.json"]
+2026-10-04 10:42:45.838318: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Creating new Ultralytics Settings v0.0.8 file ✅ 
+View Ultralytics Settings with 'yolo settings' or at '/root/.config/Ultralytics/settings.json'
+Update Settings with 'yolo settings key=value', i.e. 'yolo settings runs_dir=path/to/dir'. For help see https://docs.ultralytics.com/usage/settings.
+Evaluated 20/204 held-out images
+Evaluated 40/204 held-out images
+Evaluated 60/204 held-out images
+Evaluated 80/204 held-out images
+Evaluated 100/204 held-out images
+Evaluated 120/204 held-out images
+Evaluated 140/204 held-out images
+Evaluated 160/204 held-out images
+Evaluated 180/204 held-out images
+Evaluated 200/204 held-out images
+{
+  "images": 204,
+  "binary_road": {
+    "tp": 4451862,
+    "fp": 115523,
+    "fn": 258081,
+    "tn": 9990043,
+    "valid_pixels": 14815509,
+    "ignored_pixels": 3051,
+    "IoU": 0.92257659674734,
+    "precision": 0.9747069712756862,
+    "recall": 0.945205069360712,
+    "aggregation": "global pixel counts; not mean of per-image IoUs"
+  },
+  "detection": null
+}
+Report: /content/drivable_run_stable_20261004/official_val_result.json
+COMMAND: ["scripts/audit_accuracy_report.py", "--report", "/content/drivable_run_stable_20261004/official_val_result.json", "--manifest", "/content/drivable_run_stable_20261004/official_val_manifest.json"]
+{
+  "audit": "passed",
+  "images": 204,
+  "drives": 61,
+  "counts": {
+    "tp": 4451862,
+    "fp": 115523,
+    "fn": 258081,
+    "tn": 9990043,
+    "valid_pixels": 14815509,
+    "ignored_pixels": 3051
+  },
+  "metrics": {
+    "IoU": 0.92257659674734,
+    "precision": 0.9747069712756862,
+    "recall": 0.945205069360712
+  },
+  "road_status": {
+    "observed": 204
+  },
+  "scope": "identity and arithmetic only; not a second model run or human annotation audit"
+}

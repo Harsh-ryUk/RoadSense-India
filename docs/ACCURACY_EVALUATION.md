@@ -1,8 +1,12 @@
 # Measure held-out accuracy
 
-No accuracy score is established until a real annotated held-out dataset is
-evaluated. Synthetic tests validate metric code only. The default YOLO and
-SegFormer checkpoints are COCO/ADE20K-pretrained, not trained on IDD.
+The [completed binary fine-tuning run](../benchmarks/idd_lite_finetuned_20261004/README.md)
+reports 92.26% drivable IoU, 97.47% pixel precision and 94.52% recall on all 204
+official IDD Lite validation images. The [79.87% pretrained reference](../benchmarks/idd_lite_cpu_20261001/README.md)
+remains unchanged. These do not establish lane/pothole or full-pipeline accuracy. Synthetic tests
+validate metric code only. The default YOLO and
+SegFormer demo checkpoints are COCO/ADE20K-pretrained. The measured binary
+fine-tuned checkpoint is separate and must explicitly select road class 1.
 
 ## Start with IDD Lite
 
@@ -89,6 +93,14 @@ python -m pip install -r requirements.txt -r requirements-eval.txt
 python scripts/evaluate_accuracy.py --manifest runs/idd_val_manifest.json --config configs/idd_eval.yaml --device cuda --output runs/accuracy/result.json
 python -m pytest -q tests/test_ground_truth.py
 ```
+
+Audit saved identity/pixel-count arithmetic separately from model inference:
+
+```bash
+python scripts/audit_accuracy_report.py --report runs/accuracy/result.json --manifest runs/idd_val_manifest.json
+```
+
+An arithmetic audit is not a second model run or an annotation-quality review.
 
 `configs/idd_eval.yaml` uses the complete image and no upper-image cut, unlike the
 clip-specific Short crop. It retains the current semantic postprocessor and

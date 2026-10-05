@@ -1,0 +1,18 @@
+segmentation:
+  frame_roi:
+  - 0
+  - 0
+  - 1
+  - 1
+  input_size:
+  - 512
+  - 512
+  min_road_coverage: 0.02
+  model_name: /content/drivable_run_stable_20261004/best
+  road_class_ids:
+  - 1
+  roi_top_fraction: 0
+system:
+  device: cuda:0
+zero_shot:
+  enabled: false

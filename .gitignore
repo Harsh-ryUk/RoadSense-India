@@ -5,6 +5,8 @@ __pycache__/
 *.so
 .env
 .venv
+.venv-evaluation/
+.venv-publication/
 env/
 venv/
 ENV/
@@ -37,6 +39,8 @@ benchmark_results.csv
 !benchmarks/colab_t4_video_20261001/baseline/setup.log
 !benchmarks/colab_t4_video_20261001/optimized/benchmark.log
 !benchmarks/colab_t4_video_20261001/optimized/tests.log
+!benchmarks/idd_lite_finetuned_20261004/training.log
+!benchmarks/idd_lite_finetuned_20261004/targeted_tests.log
 
 # IDE
 .vscode/

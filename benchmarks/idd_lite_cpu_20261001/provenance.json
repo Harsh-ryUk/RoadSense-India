@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "source_commit": "1ccec21bfa2c2515b16ecc3ae27ff84761e91fa1",
+  "archive_sha256": "064f92c46a1141f290dd2a52f4c84174381445baf9f6d6bf471be0aa006601a1",
+  "original_private_manifest_sha256": "fd6797896256eceb170bab0b16f3f634c8c14f8da29abe84764ceb35f815c3b9",
+  "sample_index_transform": "Only image/mask paths made relative to extraction parent; selection, IDs, labels and input hashes unchanged.",
+  "evaluation_scope": "SegFormer component with deployed mask postprocessing; condition=Normal; full-frame IDD evaluation config; not end-to-end pipeline accuracy.",
+  "data_distributed": false,
+  "artifact_sha256": {
+    "audit.json": "8f590c3b9b8d92c59785a452cb6f1628a4da5a109bf2a8a6573bef847802c1cc",
+    "config.yaml": "f05e58f7ec2c93cbb5cf0d01082f865778ab6d0ba58d0e2eed77c7d4bbc36a17",
+    "measured_source.tar.gz": "626186cd80c4c325564aac85922239c5449da46f74815cbd05eff1d84a3a3e68",
+    "result.json": "a901108533059142f5ac2945bba61486779088058e52c09f8bb0788834b6b082",
+    "sample_index.json": "803f740c10ded6c7f99fdd229686d61c7c082922f7a159c9441fd2f12599ee4c"
+  }
+}

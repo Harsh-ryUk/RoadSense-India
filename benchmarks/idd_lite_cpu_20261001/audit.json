@@ -1,0 +1,23 @@
+{
+  "audit": "passed",
+  "images": 204,
+  "drives": 61,
+  "counts": {
+    "tp": 3929523,
+    "fp": 210052,
+    "fn": 780420,
+    "tn": 9895514,
+    "valid_pixels": 14815509,
+    "ignored_pixels": 3051
+  },
+  "metrics": {
+    "IoU": 0.7986843482564515,
+    "precision": 0.9492575928688332,
+    "recall": 0.834303727242559
+  },
+  "road_status": {
+    "observed": 200,
+    "unknown": 4
+  },
+  "scope": "identity and arithmetic only; not a second model run or human annotation audit"
+}

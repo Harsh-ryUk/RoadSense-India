@@ -1,0 +1,27 @@
+{
+  "epoch": 36,
+  "fit_mean_loss": 0.041789500805973906,
+  "optimizer_updates": 152,
+  "amp_skipped_updates": 0,
+  "optimizer_updates_total": 5468,
+  "amp_skipped_updates_total": 4,
+  "loss_scale": 16384.0,
+  "epoch_seconds_including_dev": 46.432249025999226,
+  "development_raw": {
+    "tp": 4268542,
+    "fp": 130829,
+    "fn": 133163,
+    "tn": 9267081,
+    "valid_pixels": 13799615,
+    "ignored_pixels": 1985,
+    "IoU": 0.9417562008360003,
+    "precision": 0.9702618851649475,
+    "recall": 0.969747404698861,
+    "aggregation": "global pixel counts; not mean of per-image IoUs"
+  },
+  "development_raw_target_status": {
+    "drivable_IoU_95": false,
+    "precision_98": false,
+    "recall_95": true
+  }
+}

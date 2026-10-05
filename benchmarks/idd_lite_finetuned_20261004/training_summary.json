@@ -1,0 +1,10 @@
+{
+  "training_completed": true,
+  "best_internal_raw_IoU": 0.9417562008360003,
+  "completed_epochs": 50,
+  "optimizer_updates_total": 7595,
+  "amp_skipped_updates_total": 5,
+  "best_weights_sha256": "1cf44872753e3231540324da9871d598d0687b0be43d2126026e560cbb3061d1",
+  "official_val_metrics": null,
+  "instruction": "Freeze the selected model/config, then run evaluate_accuracy.py separately. Never claim raw internal-dev scores as official-val or deployed accuracy."
+}
